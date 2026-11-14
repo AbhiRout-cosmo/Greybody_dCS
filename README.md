@@ -1,14 +1,18 @@
 # Supplemental Material — Reproducibility package
 
-**Parity-violating greybody factors of a dynamical Chern–Simons black hole:
-closed-form absorption asymmetry and graviton-to-pseudoscalar conversion**
+**Analytic parity-violating greybody factors of a dynamical Chern–Simons black hole**
 A. Rout
+
+*Package version v1.1.0 (revised manuscript). The core results — the two closed-form
+quadrupole coefficients — are unchanged from v1.0.0; this version adds reproducibility
+scripts for the revised phase-sector analysis and the full two-channel S-matrix.*
 
 This package reproduces every quantitative result of the paper: the two closed-form
 quadrupole coefficients, the matched-asymptotic normalizations they rest on, the
-phase-sector transcendental, and the two-channel numerical validation. Each script is
-standalone, prints results labeled by the paper's equation/table numbers, and requires
-only open-source Python packages.
+phase-sector transcendental, the general-relativistic and parity-violating reflection-phase
+relations, the complete two-channel S-matrix at ℓ=2, and the two-channel numerical
+validation. Each script is standalone, prints results labeled by the paper's equation/table
+numbers, and requires only open-source Python packages.
 
 ## Dependencies
 - Python ≥ 3.9
@@ -26,6 +30,9 @@ Install: `pip install -r requirements.txt`
 | `04_kappa2_reduction.py` | D₂^κ; 7 ln2-free monomials (u=2/r); κ₂ in proven basis, ζ(3) coeff = 0 | Eqs. (28)–(31); App. C | mpmath (58-dig) + PSLQ + sympy | ~1–2 min |
 | `05_phase_D2.py` | D₂ = ζ(3)−9/8 (fully symbolic, no PSLQ); c₁=2π²D₂ | Eq. (37); Table I | symbolic (polygamma masters) | seconds |
 | `06_coupled_ode.py` | convergence + flux; linearity; drop-δV₂₂; ℓ=3; c_∞ | Sec. VI; Fig. 2; App. C.8 | numeric (scipy) | ~2–4 min |
+| `07_reflection_phase_GR.py` | GR Regge–Wheeler/Zerilli reflection-phase relation arg R_RW − arg R_Z = −2 arctan(Mω/2) (equal moduli, differing phases) | Sec. V.C; Eq. (35) | numeric (scipy) | seconds |
+| `08_reflection_phase_dCS.py` | O(ζ) parity-violating axial reflection-phase shift Δφ_R: ζ-linearity and ~(Mω)⁵ low-frequency suppression | Sec. V.C; Eq. (36) | numeric (scipy) | ~1 min |
+| `09_Smatrix_ell2.py` | full 2×2 S-matrix at ℓ=2: unitarity, reciprocity, Table VII probabilities; recovers d₂ from graviton→scalar conversion | App. E; Table VII | numeric (scipy) | ~1 min |
 
 ## Notes on precision and honest status
 - **d₂ [Eq. (27)]** is an exact closed form: every factor (J, the vertex 1944, the ratio 1/36)
@@ -37,6 +44,15 @@ Install: `pip install -r requirements.txt`
   quadrature↔closed-form agreement (default settings give ~48 digits, ample for the identification).
 - **D₂ = ζ(3)−9/8 [Eq. (37)]** is fully symbolic (script 05). The overall phase prefactor
   2π² is a numerical identification (four digits; script 06 part e and the paper's Table I footnote).
+- **Phase sector [Sec. V.C].** The reflection-phase difference between the axial (Regge–Wheeler)
+  and polar (Zerilli) channels is, at ζ=0, the exact parity-even Chandrasekhar–Detweiler relation
+  −2 arctan(Mω/2) [O(Mω), ζ-independent; script 07, matched to all digits]. The genuinely
+  parity-violating O(ζ) shift Δφ_R is strongly suppressed, numerically ~(Mω)⁵ up to a possible
+  logarithm (script 08), confirming it is negligible at low frequency — far below both the GR
+  baseline and the transmission phase c₁=O(ζω).
+- **Full S-matrix [App. E].** The complete two-channel S-matrix at ℓ=2 (script 09) is unitary
+  and reciprocal to ~1e−12; the pseudoscalar-incidence channel (scalar greybody and
+  scalar→graviton conversion) does not modify d₂ or κ₂, which reside in the graviton-incidence column.
 - **Numerical vs analytic precision:** the coupled ODE (script 06) reproduces κ₂, d₂ to ~3–4
   digits, limited by O((Mω)²ln Mω) corrections; flux is conserved to ~1e−12–1e−15. The
   high-precision certification is the analytic reduction (script 04), not the ODE.
