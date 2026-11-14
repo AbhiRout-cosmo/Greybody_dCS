@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software (via the Zenodo DOI below) and the accompanying paper (see preferred-citation)."
+title: "Greybody_dCS: reproducibility package for analytic parity-violating greybody factors of a dynamical Chern-Simons black hole"
+type: software
+authors:
+  - family-names: Rout
+    given-names: Abhishek
+    affiliation: "Department of Physics and Astronomy, University of South Carolina, Columbia, SC 29208, USA"
+    orcid: "https://orcid.org/0009-0009-1118-1007"
+version: v1.1.0
+date-released: 2026-11-14
+doi: 10.5281/zenodo.23078252   # concept (all-versions) DOI
+url: "https://github.com/AbhiRout-cosmo/Greybody_dCS"
+repository-code: "https://github.com/AbhiRout-cosmo/Greybody_dCS"
+license: MIT
+keywords:
+  - "dynamical Chern-Simons gravity"
+  - "greybody factors"
+  - "black hole perturbation theory"
+  - "parity violation"
+  - "gravitational waves"
+preferred-citation:
+  type: article
+  title: "Analytic parity-violating greybody factors of a dynamical Chern-Simons black hole"
+  authors:
+    - family-names: Rout
+      given-names: Abhishek
+      affiliation: "Department of Physics and Astronomy, University of South Carolina, Columbia, SC 29208, USA"
+      orcid: "https://orcid.org/0009-0009-1118-1007"
+  year: 2026
+  url: "https://arxiv.org/abs/2610.10280"
+  notes: "arXiv:2610.10280; under review at General Relativity and Gravitation. Update with the journal reference (volume, pages, DOI) upon acceptance."
+  identifiers:
+    - type: other
+      value: "arXiv:2610.10280"
+      description: "arXiv preprint"
